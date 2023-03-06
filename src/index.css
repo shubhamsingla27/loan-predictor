@@ -30,7 +30,7 @@ a {
     box-sizing: border-box;
 }
 
-.amplify-button--fullwidth {
+.amplify-button--primary {
     background-color: rgb(20 184 166);
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
