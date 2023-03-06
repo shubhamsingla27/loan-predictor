@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-loanpredictor-staging-132507-authRole",
+      "UnauthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictor-staging-132507-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictor-staging-132507-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-loanpredictor-staging-132507-deployment",
+      "UnauthRoleName": "amplify-loanpredictor-staging-132507-unauthRole",
+      "StackName": "amplify-loanpredictor-staging-132507",
+      "StackId": "arn:aws:cloudformation:us-east-1:961848762648:stack/amplify-loanpredictor-staging-132507/2610c4b0-bb59-11ed-830c-1254e216e535",
+      "AmplifyAppId": "d1izcu3ey5d97d"
+    },
+    "categories": {
+      "auth": {
+        "loanpredictor": {}
+      }
+    }
+  }
+}
