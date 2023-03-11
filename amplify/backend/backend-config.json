@@ -1,6 +1,6 @@
 {
   "auth": {
-    "loanpredictor": {
+    "loanpredictoramplify": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {

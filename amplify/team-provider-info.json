@@ -1,19 +1,19 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-loanpredictor-staging-132507-authRole",
-      "UnauthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictor-staging-132507-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictor-staging-132507-authRole",
+      "AuthRoleName": "amplify-loanpredictoramplify-staging-50455-authRole",
+      "UnauthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictoramplify-staging-50455-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::961848762648:role/amplify-loanpredictoramplify-staging-50455-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-loanpredictor-staging-132507-deployment",
-      "UnauthRoleName": "amplify-loanpredictor-staging-132507-unauthRole",
-      "StackName": "amplify-loanpredictor-staging-132507",
-      "StackId": "arn:aws:cloudformation:us-east-1:961848762648:stack/amplify-loanpredictor-staging-132507/2610c4b0-bb59-11ed-830c-1254e216e535",
-      "AmplifyAppId": "d1izcu3ey5d97d"
+      "DeploymentBucketName": "amplify-loanpredictoramplify-staging-50455-deployment",
+      "UnauthRoleName": "amplify-loanpredictoramplify-staging-50455-unauthRole",
+      "StackName": "amplify-loanpredictoramplify-staging-50455",
+      "StackId": "arn:aws:cloudformation:us-east-1:961848762648:stack/amplify-loanpredictoramplify-staging-50455/19385c70-bf01-11ed-9489-0a1c67a94c85",
+      "AmplifyAppId": "d2v0n0goqbq7gc"
     },
     "categories": {
       "auth": {
-        "loanpredictor": {}
+        "loanpredictoramplify": {}
       }
     }
   }

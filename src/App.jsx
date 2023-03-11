@@ -13,10 +13,48 @@ import { Authenticator } from "@aws-amplify/ui-react";
 const App = () => {
     const [open, setOpen] = React.useState(false);
     const [receivedResult, setReceivedResult] = React.useState("");
+    const [sendingResponse, setSendingResponse] = React.useState(false);
+    const [responseSentSucc, setResponseSentSucc] = React.useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false);
         setReceivedResult("");
+        setSendingResponse(false);
+        setResponseSentSucc(false);
+        formik.resetForm({ values: "" });
+    };
+
+    const sendresponse = (e) => {
+        setSendingResponse(true);
+        const sendResponseToApplicant = async () => {
+            const data = {
+                responseType: e.target.name,
+                email: formik.values.email,
+            };
+            const response = await fetch(
+                "https://sfmd4hbbpb.execute-api.us-east-1.amazonaws.com/dev",
+                {
+                    method: "POST",
+                    mode: "cors",
+                    cache: "no-cache",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    redirect: "follow",
+                    referrerPolicy: "no-referrer",
+                    body: JSON.stringify(data),
+                }
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data == "Done") {
+                        setResponseSentSucc(true);
+                    }
+                });
+        };
+        sendResponseToApplicant();
     };
 
     const formik = useFormik({
@@ -94,7 +132,7 @@ const App = () => {
             };
             fetchData();
             handleOpen();
-            resetForm({ values: "" });
+            // resetForm({ values: "" });
         },
     });
 
@@ -406,19 +444,58 @@ const App = () => {
                                 </button>
                                 <Modal open={open} onClose={handleClose}>
                                     <div className="bg-white p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg w-1/3 font-latoRegular">
-                                        <div className="flex flex-col p-4 items-center justify-center">
-                                            <h2 className="flex">
-                                                {`Loan default rate: ${
-                                                    receivedResult * 100
-                                                } %`}
-                                            </h2>
-                                            <button
-                                                onClick={handleClose}
-                                                className="bg-teal-500 w-2/3 font-latoBold text-sm text-white py-3 mt-6 rounded-lg"
-                                            >
-                                                Check Another Application
-                                            </button>
-                                        </div>
+                                        {receivedResult ? (
+                                            <div className="flex flex-col p-4 items-center justify-center">
+                                                <h2 className="flex p-4">
+                                                    {`Loan default rate: ${
+                                                        receivedResult * 100
+                                                    } %`}
+                                                </h2>
+                                                {sendingResponse ? (
+                                                    responseSentSucc ? (
+                                                        <span>Sent</span>
+                                                    ) : (
+                                                        <span className="loader"></span>
+                                                    )
+                                                ) : (
+                                                    <div className="flex w-3/4 gap-4">
+                                                        <p className="flex flex-2 items-center">
+                                                            Send Response to
+                                                            Applicant
+                                                        </p>
+                                                        <button
+                                                            name="positive"
+                                                            onClick={
+                                                                sendresponse
+                                                            }
+                                                            className="flex-1 bg-teal-500 text-white py-3 rounded-lg"
+                                                        >
+                                                            Approve
+                                                        </button>
+                                                        <button
+                                                            name="negative"
+                                                            onClick={
+                                                                sendresponse
+                                                            }
+                                                            className="flex-1 bg-teal-500 text-white py-3 rounded-lg"
+                                                        >
+                                                            Reject
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                <button
+                                                    onClick={handleClose}
+                                                    className="bg-teal-500 w-2/3 font-latoBold text-sm text-white py-3 mt-6 rounded-lg"
+                                                >
+                                                    Check Another Application
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className="flex items-center justify-center">
+                                                <span className="loader"></span>
+                                            </div>
+                                        )}
                                     </div>
                                 </Modal>
                             </div>
