@@ -446,7 +446,7 @@ const App = () => {
                                     <div className="bg-white p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg w-1/3 font-latoRegular">
                                         {receivedResult ? (
                                             <div className="flex flex-col p-4 items-center justify-center">
-                                                <h2 className="flex p-4">
+                                                <h2 className="flex p-4 mb-6 text-lg">
                                                     {`Loan default rate: ${
                                                         receivedResult * 100
                                                     } %`}
@@ -477,7 +477,7 @@ const App = () => {
                                                             onClick={
                                                                 sendresponse
                                                             }
-                                                            className="flex-1 bg-teal-500 text-white py-3 rounded-lg"
+                                                            className="flex-1 bg-rose-400 text-white py-3 rounded-lg"
                                                         >
                                                             Reject
                                                         </button>
