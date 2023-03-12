@@ -7,9 +7,9 @@ import "@aws-amplify/ui-react/styles.css";
 import { Amplify } from "aws-amplify";
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
-
 import { Authenticator } from "@aws-amplify/ui-react";
 
+import sent from "./assets/done-ring-round-svgrepo-com.svg";
 const App = () => {
     const [open, setOpen] = React.useState(false);
     const [receivedResult, setReceivedResult] = React.useState("");
@@ -172,7 +172,7 @@ const App = () => {
                                                 : "Name"}
                                         </label>
                                         <input
-                                            className="border-2 border-gray-400 p-2 w-full rounded-md focus:border-teal-500 focus:ring-teal-500 "
+                                            className="border-2 border-gray-400 p-2 w-full rounded-md focus:border-teal-500 focus:ring ring-teal-500 "
                                             type="text"
                                             name="name"
                                             placeholder="Enter applicant name"
@@ -453,7 +453,13 @@ const App = () => {
                                                 </h2>
                                                 {sendingResponse ? (
                                                     responseSentSucc ? (
-                                                        <span>Sent</span>
+                                                        <span className="animate-bounce">
+                                                            <img
+                                                                className="w-8 h-8"
+                                                                src={sent}
+                                                                alt="Email Sent"
+                                                            />
+                                                        </span>
                                                     ) : (
                                                         <span className="loader"></span>
                                                     )
