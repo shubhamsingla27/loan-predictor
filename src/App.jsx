@@ -447,8 +447,11 @@ const App = () => {
                                         {receivedResult ? (
                                             <div className="flex flex-col p-4 items-center justify-center">
                                                 <h2 className="flex p-4 mb-6 text-lg">
-                                                    {`Loan default rate: ${
-                                                        receivedResult * 100
+                                                    {`Loan default probability: ${
+                                                        100 -
+                                                        (
+                                                            receivedResult * 100
+                                                        ).toFixed(2)
                                                     } %`}
                                                 </h2>
                                                 {sendingResponse ? (
@@ -467,7 +470,7 @@ const App = () => {
                                                     <div className="flex w-3/4 gap-4">
                                                         <p className="flex flex-2 items-center">
                                                             Send Response to
-                                                            Applicant
+                                                            Applicant:
                                                         </p>
                                                         <button
                                                             name="positive"
