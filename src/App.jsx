@@ -29,6 +29,7 @@ const App = () => {
         setSendingResponse(true);
         const sendResponseToApplicant = async () => {
             const data = {
+                name: formik.values.name,
                 responseType: e.target.name,
                 email: formik.values.email,
             };
@@ -95,6 +96,7 @@ const App = () => {
             console.log(values);
             const fetchData = async () => {
                 const data = {
+                    name: values.name,
                     data: [
                         [
                             values.moody,
@@ -107,7 +109,6 @@ const App = () => {
                         ],
                     ],
                 };
-                console.log(data);
                 const response = await fetch(
                     "https://sfmd4hbbpb.execute-api.us-east-1.amazonaws.com/dev",
                     {
@@ -454,7 +455,35 @@ const App = () => {
                                                         ).toFixed(2)
                                                     } %`}
                                                 </h2>
+
                                                 {sendingResponse ? (
+                                                    responseSentSucc ? (
+                                                        <span className="animate-bounce">
+                                                            <img
+                                                                className="w-8 h-8"
+                                                                src={sent}
+                                                                alt="Email Sent"
+                                                            />
+                                                        </span>
+                                                    ) : (
+                                                        <span className="loader"></span>
+                                                    )
+                                                ) : (
+                                                    <div className="flex w-auto gap-4">
+                                                        <button
+                                                            name="sendresponse"
+                                                            onClick={
+                                                                sendresponse
+                                                            }
+                                                            className="px-4 bg-teal-500 text-white py-3 rounded-lg"
+                                                        >
+                                                            Send Response to
+                                                            Applicant
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {/* {sendingResponse ? (
                                                     responseSentSucc ? (
                                                         <span className="animate-bounce">
                                                             <img
@@ -491,7 +520,7 @@ const App = () => {
                                                             Reject
                                                         </button>
                                                     </div>
-                                                )}
+                                                )} */}
 
                                                 <button
                                                     onClick={handleClose}
